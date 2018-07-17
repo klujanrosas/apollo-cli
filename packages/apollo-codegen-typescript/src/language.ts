@@ -148,7 +148,11 @@ export default class TypescriptGenerator {
   }
 
   public nameFromScopeStack(scope: string[]) {
-    return scope.join('_');
+    const scopeName = scope.map(name => {
+      return name.charAt(0).toUpperCase() + name.substr(1)
+    }).join('')
+
+    return scopeName
   }
 
   public makeNullableType(type: t.TSType) {
